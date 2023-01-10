@@ -16,9 +16,4 @@ $routes = [
         'controller' => '\Phplover\Modules\Documentation\Controllers\Index',
         'method' => 'showPage',
     ],
-    [
-        'url' => '/documentation/{slug}/{slug2}',
-        'controller' => '\Phplover\Modules\Documentation\Controllers\Index',
-        'method' => 'showPage',
-    ]
 ];
