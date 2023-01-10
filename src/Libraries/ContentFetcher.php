@@ -28,15 +28,15 @@ class ContentFetcher
         $description = str_replace('"', "", $description);
         $description = trim($description);
 
-        // get content
-        $content = explode("---", $content)[2];
-        $content = trim($content);
-
         // get slug
         $slug = explode("slug:", $content)[1];
         $slug = explode("\n", $slug)[0];
         $slug = str_replace('"', "", $slug);
         $slug = trim($slug);
+
+        // get content
+        $content = explode("---", $content)[2];
+        $content = trim($content);
 
         // markdown parser
         $parser = new \League\CommonMark\CommonMarkConverter();

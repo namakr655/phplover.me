@@ -1,6 +1,7 @@
 <?php $this->layout('layouts/base', [
     'title' => $title,
     'description' => $description,
+    'slug' => $slug,
 ]); ?>
 
 <div class="not-prose my-10">

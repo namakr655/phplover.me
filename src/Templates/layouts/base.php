@@ -9,6 +9,10 @@
 
     <meta name="description" content="<?= $this->e($description) ?>">
 
+    <?php if (isset($slug)): ?>
+        <link rel="canonical" href="<?= base_url('/' . $slug) ?>">
+    <?php endif; ?>
+
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="<?= base_url('/assets/css/tailwind.css') ?>">
