@@ -30,13 +30,7 @@ if ($baseConfig->debugging === true) {
 }
 
 // Routing the Requests
-$routes = [
-    [
-        'url' => '/',
-        'controller' => 'Home',
-        'method' => 'Index',
-    ],
-];
+require_once(APPPATH . 'Routes.php');
 
 // Router Library
 $router = new \Phplover\Libraries\Router();
