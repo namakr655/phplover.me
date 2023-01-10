@@ -1,33 +1,23 @@
 <?php
 
-namespace Phplover\Modules\Documentation\Controllers;
+namespace Phplover\Modules\Pages\Controllers;
 
 class Index
 {
 
-    public function index()
-    {
-        return redirect('/documentation/index', 301);
-    }
-
     public function showPage(array $args)
     {
-        // get slug
         $slug = $args[0];
+        
+        $file_path = ROOTPATH . 'modules/Pages/Contents/' . $slug . '.md';
 
-        // file path
-        $file_path = ROOTPATH . 'modules/Documentation/Contents/' . $slug . '.md';
-
-        // check if page exists
         if (file_exists($file_path))
         {
             $contentFetcher = new \Phplover\Libraries\ContentFetcher();
 
-            // fetch content
             $content = $contentFetcher->fetch($file_path);
 
-            // return view
-            return view('documentation/show', [
+            return view('pages/show', [
                 'title' => $content['title'],
                 'description' => $content['description'],
                 'content' => $content['content'],
@@ -37,7 +27,6 @@ class Index
         } else {
             return (new \Phplover\Libraries\Error)->notFound();
         }
-
     }
 
 }
