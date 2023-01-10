@@ -5,16 +5,21 @@
  */
 
 // URL related functions
-function base_url (string $path = ''): string
+function base_url(string $path = ''): string
 {
-    return (new \Phplover\Config\Base)->base_url . $path;
+    $baseConfig = new \Phplover\Config\Base();
+    
+    if ($baseConfig->debugging === true && isset($_ENV['BASE_URL'])) {
+        return $_ENV['BASE_URL'] . $path;
+    } else {
+        return $baseConfig->base_url . $path;
+    }
 }
 
-function redirect (string $path, int $statusCode = null)
+function redirect(string $path, int $statusCode = null)
 {
 
-    if ($statusCode !== null)
-    {
+    if ($statusCode !== null) {
         http_response_code($statusCode);
     }
 
@@ -24,7 +29,7 @@ function redirect (string $path, int $statusCode = null)
 }
 
 // View related functions
-function view (string $template, array $data = [], int $statusCode = 200)
+function view(string $template, array $data = [], int $statusCode = 200)
 {
 
     // load the views library to use
@@ -36,7 +41,7 @@ function view (string $template, array $data = [], int $statusCode = 200)
 }
 
 // JSON related functions
-function jsonResponse (array $data, int $statusCode = 200)
+function jsonResponse(array $data, int $statusCode = 200)
 {
 
     // load the json library to use
