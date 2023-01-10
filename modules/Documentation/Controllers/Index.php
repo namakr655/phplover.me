@@ -7,7 +7,7 @@ class Index
 
     public function index()
     {
-        return redirect('/documentation/index');
+        return redirect('/documentation/index', 301);
     }
 
     public function showPage(array $args)
