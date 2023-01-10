@@ -32,6 +32,12 @@ class ContentFetcher
         $content = explode("---", $content)[2];
         $content = trim($content);
 
+        // get slug
+        $slug = explode("slug:", $content)[1];
+        $slug = explode("\n", $slug)[0];
+        $slug = str_replace('"', "", $slug);
+        $slug = trim($slug);
+
         // markdown parser
         $parser = new \League\CommonMark\CommonMarkConverter();
 
@@ -43,7 +49,7 @@ class ContentFetcher
             'title' => $title,
             'description' => $description,
             'content' => $content,
-            'slug' => basename($fileUrl)
+            'slug' => $slug
         ];
     }
 }
